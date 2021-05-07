@@ -1,0 +1,17 @@
+### 
+GET http://localhost:5000/api
+
+### 
+POST http://localhost:5000/api
+Content-Type: application/json
+
+{
+    "name": "Camiseta UFO: Abducción",
+    "price": "45000",
+    "category": "Camisetas",    
+    "serie": "UFO",
+    "size": "L, M, S",
+    "stock": "12",
+    "description": "Camiseta UFO: Abducción. 100% Polyester. Diseño original de UFO Collections. Los costos de envío son asumidos por el comprador. Recuerda que con tu compra apoyas el talento colombiano.",    
+    "imgUrl": "https://srv.latostadora.com/designall.dll/ovni_abduccion_vaca--i:1356231968683013562391;b:f8f8f8;s:M_L1;f:f;k:bd0ec963d27988b0a8dbc00d005d52e4;p:1.jpg"
+}

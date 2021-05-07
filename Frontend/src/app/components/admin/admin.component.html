@@ -1,0 +1,208 @@
+<div class="container-fluid">  
+    <div class="row">
+      <!-- Form-->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">Administracion de productos UFO Collections</div>
+          <div class="card-body">
+            <form #productForm="ngForm">
+              <div class="form-group d-flex flex-column">
+                <input
+                  type="hidden"
+                  id="_id"
+                  name="_id"
+                  #name="ngModel"
+                  [(ngModel)]="ProductsService.selectedProduct._id"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group d-flex flex-column">
+                <label for="name">Nombre del Producto</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  #name="ngModel"
+                  [(ngModel)]="ProductsService.selectedProduct.name"
+                  class="form-control"
+                  required                  
+                />
+              </div>
+              <div class="form-group d-flex flex-column">
+                <label for="brand">Colección</label>
+                <div class="input-group mb-3">                  
+                  <select required class="custom-select" id="set" name="set" #name="ngModel" [(ngModel)]="ProductsService.selectedProduct.set" class="form-control">
+                    <option value="UFO">UFO</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group d-flex flex-column">
+                <label for="price">Precio del Producto</label>
+                <input
+                  type="number"
+                  id="price"
+                  name="price"
+                  #name="ngModel"
+                  [(ngModel)]="ProductsService.selectedProduct.price"
+                  class="form-control"
+                  required
+                >
+              </div>
+              <div class="form-group d-flex flex-column">
+                <label for="price">Categoría del Producto</label>                
+                <div class="input-group mb-3">                  
+                  <select required class="custom-select" id="category" name="category" #name="ngModel" [(ngModel)]="ProductsService.selectedProduct.category" class="form-control">
+                    <option selected>Selecciona...</option>
+                    <option value="Afiches">Afiches</option>
+                    <option value="Busos Estampados">Busos Estampados</option>
+                    <option value="Camisetas Estampadas">Camisetas Estampadas</option>
+                    <option value="Cuadros">Cuadros</option>
+                    <option value="Mugs Térmicos">Mugs Térmicos</option>
+                    <option value="Pad Mouse">Pad Mouse</option>
+                    <option value="Tapabocas 3D">Tapabocas 3D</option>
+                    <option value="Tulas impermeables">Tulas impermeables</option>
+                  </select>
+                </div>            
+              </div>
+
+              <div class="form-group d-flex flex-column">
+                <label for="brand">Talla del Producto</label>
+                <div class="input-group mb-3">                  
+                  <select required class="custom-select" id="size" name="size" #name="ngModel" [(ngModel)]="ProductsService.selectedProduct.size" class="form-control">
+                    <option selected>Selecciona...</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="No Aplica">No Aplica</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group d-flex flex-column">
+                <label for="imgUrl">Disponibles</label>
+                <input
+                  type="number"
+                  id="stock"
+                  name="stock"
+                  #name="ngModel"
+                  [(ngModel)]="ProductsService.selectedProduct.stock"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group d-flex flex-column">
+                <label for="imgUrl">Descripción</label>
+                <input
+                  type="text"
+                  id="description"
+                  name="description"
+                  #name="ngModel"
+                  [(ngModel)]="ProductsService.selectedProduct.description"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group d-flex flex-column">
+                <label for="imgUrl">Url Imagen del Producto</label>
+                <input
+                  type="text"
+                  id="imgUrl"
+                  name="imgUrl"
+                  #name="ngModel"
+                  [(ngModel)]="ProductsService.selectedProduct.imgUrl"
+                  class="form-control"
+                  required
+                />
+              </div>              
+              <button class="btn btn-success mx-2" type="submit" (click)="createService(productForm)">
+                Guardar
+              </button>
+              <button class="btn btn-info mx-2" (click)="cleanForm()">
+                Limpiar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Tabla -->
+      <div class="col-md-8">
+        <table class="table table-striped">
+          <thead>
+            <th>
+            <button class="btn btn-secondary" (click)="filterByName()">
+              Nombre
+            </button>
+            </th>
+            <th>
+            <button class="btn btn-secondary" (click)="filterBySet()">
+              Colección
+            </button>
+            </th>
+            <th>
+              <button class="btn btn-secondary" (click)="filterByPrice()">
+                Precio
+              </button>
+            </th>            
+            <th>
+              <button class="btn btn-secondary btn-block" (click)="filterByCategory()">
+                Categoría
+              </button>
+            </th>
+            <th>
+              <button class="btn btn-secondary btn-block" (click)="filterBySize()">
+                Tallas
+              </button>
+            </th>
+            <th>
+              <button class="btn btn-secondary btn-block" (click)="filterByStock()">
+                Disponibles
+              </button>
+            </th>                   
+            <th>
+              <button class="btn btn-secondary btn-block" (click)="filterByCreatedAt()">
+                Fecha de creación
+              </button>
+            </th>
+            <th>
+              <button class="btn btn-secondary btn-block" (click)="filterByUpdatedAt()">
+                Fecha de creación
+              </button>
+            </th>   
+            <th>
+              Descripción
+            </th>
+            <th>
+              Imagen
+            </th>  
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of ProductsService.products">
+              <td>{{ producto.name }}</td>
+              <td>{{ producto.set }}</td>
+              <td>{{ producto.price }}</td>
+              <td>{{ producto.category }}</td>
+              <td>{{ producto.size }}</td>
+              <td>{{ producto.stock }}</td>              
+              <td>{{ producto.createdAt }}</td>
+              <td>{{ producto.updatedAt }}</td>
+              <td>{{ producto.description }}</td>
+              <td>{{ producto.imgUrl }}</td>
+              
+              <!-- Buttons -->
+              <td>
+                <a (click)="updateService(producto)" class="mx-2 btn btn-warning"
+                  >Editar</a
+                >
+                <a
+                  (click)="deleteService(producto._id, producto.name)"
+                  class="mx-2 btn btn-danger"
+                  >Eliminar</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

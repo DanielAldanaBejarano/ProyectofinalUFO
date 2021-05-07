@@ -1,0 +1,19 @@
+<div class="d-flex flex-wrap justify-content-center" style="margin-top: 20%;">
+  <div *ngFor="let producto of ProductService.products" class="m-4">
+      <div class="card" style="width: 18rem;">
+          <img src={{producto.imgUrl}} class="card-img-top" alt="..." style="width: auto; height: 400px;">
+          <div class="card-body">
+            <h1 class="card-title">{{producto.name}}</h1>
+            <h2 class="card-title">{{producto.set}}</h2>
+            <h3 class="card-text">{{producto.category}}</h3>
+            <h2 class="card-text">${{producto.price}} COP </h2>            
+            <h4 class="card-text">{{producto.size}}</h4>
+            <h3 class="card-text">Disponibles: {{producto.stock}}</h3>
+            <p class="card-text">{{producto.description}}</p>
+            <button (click)="accept()" class="btn card-btn-color">Comprar!</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+

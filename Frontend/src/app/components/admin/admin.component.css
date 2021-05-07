@@ -1,0 +1,11 @@
+input:invalid {
+    border: 2px black;
+  }
+  
+  input:invalid:required {
+    background-color: rgb(212, 212, 212);
+  }
+  
+  input:valid {
+    border: 2px solid black;
+  }

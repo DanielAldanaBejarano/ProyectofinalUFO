@@ -1,0 +1,9 @@
+*
+{
+  font-family:  'Arvo', serif;
+  color:grey;
+}
+
+p::first-letter {
+    font-size: 40px;
+}

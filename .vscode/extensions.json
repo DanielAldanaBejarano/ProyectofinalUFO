@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "esbenp.prettier-vscode",
+        "pkief.material-icon-theme",
+        "humao.rest-client",
+        "angular.ng-template"
+    ]
+}

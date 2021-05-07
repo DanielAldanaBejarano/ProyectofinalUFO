@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+*
+{ 
+  font-family:  'New Tegomin', serif;
+  color:grey;
+}
+
+body {
+  background: url(https://images.hdqwalls.com/download/space-digital-art-8k-2h-3840x2400.jpg);
+  background-size: cover;
+}
